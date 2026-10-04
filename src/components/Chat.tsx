@@ -108,7 +108,7 @@ export default function Chat({ dot, conversation }: { dot: Dot; conversation?: s
           </div>
         </div>
 
-        <div className="w-full px-3 pb-3 sm:px-6 sm:pb-5">
+        <div className="chat-composer w-full px-3 pb-3 sm:px-6 sm:pb-5">
           {!hasKey && (
             <div className="mb-2 flex items-center gap-2 rounded-lg border border-warning/30 bg-warning/[0.08] px-3.5 py-2 text-body-sm">
               <ShieldAlert className="size-4 text-warning" strokeWidth={1.75} />
@@ -285,7 +285,7 @@ function Composer({ dot, onSend, onVoice }: { dot: Dot; onSend: (text: string, a
               }
             }}
             placeholder={dragging ? "Drop files to attach" : `Message ${dot.name}…`}
-            className="max-h-52 min-h-10 flex-1 resize-none bg-transparent py-2 text-[16px] leading-[1.45] tracking-default outline-none [field-sizing:content] placeholder:text-foreground/35"
+            className="max-h-52 min-h-10 min-w-0 flex-1 resize-none bg-transparent py-2 text-[16px] leading-[1.45] tracking-default outline-none [field-sizing:content] placeholder:text-foreground/35"
           />
           {text.trim() || ready.length || busy ? (
             <button
@@ -323,7 +323,7 @@ function Attachments({ items, align = "start" }: { items: Attachment[]; align?: 
       {images.map((a) => (
         <a key={a.id} href={`/api/files/${a.id}`} target="_blank" rel="noreferrer" className="block overflow-hidden rounded-lg border border-black/[0.06] bg-card">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`/api/files/${a.id}`} alt={a.name} className="max-h-60 max-w-[320px] object-contain" />
+          <img src={`/api/files/${a.id}`} alt={a.name} className="max-h-60 max-w-full sm:max-w-[320px] object-contain" />
         </a>
       ))}
       {others.map((a) => (
@@ -368,7 +368,7 @@ export function MessageRow({ m, dot, showName = false }: { m: Message; dot: Dot;
       <div className="flex flex-col items-end pl-8 sm:pl-12">
         {m.from && <span className="eyebrow mb-1">{m.from.replace(/^dot:/, "From ").replace(/^routine:/, "Routine · ")}</span>}
         {m.text && (
-          <div className="max-w-full rounded-[18px] bg-foreground px-4 py-2.5 text-[15px] leading-[1.5] tracking-default whitespace-pre-wrap text-card">
+          <div className="max-w-full break-words rounded-[18px] bg-foreground px-4 py-2.5 text-[15px] leading-[1.5] tracking-default whitespace-pre-wrap text-card">
             {m.text}
           </div>
         )}

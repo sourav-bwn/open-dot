@@ -6,7 +6,7 @@ import { feetFor, randomLook } from "@/lib/look";
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-[88px_1fr] items-start gap-3 py-3 first:pt-0 last:pb-0">
+    <div className="grid grid-cols-1 sm:grid-cols-[88px_1fr] items-start gap-3 py-3 first:pt-0 last:pb-0">
       <div className="eyebrow pt-2">{label}</div>
       <div>{children}</div>
     </div>
@@ -38,12 +38,12 @@ function Swatches({ value, onChange, palette = COLORS }: { value: string; onChan
           key={c}
           type="button"
           onClick={() => onChange(c)}
-          className={`size-7 rounded-full ring-offset-2 ring-offset-card transition ${c === value ? "ring-[1.5px] ring-foreground" : "hover:scale-110"}`}
+          className={`size-11 sm:size-7 rounded-full ring-offset-2 ring-offset-card transition ${c === value ? "ring-[1.5px] ring-foreground" : "hover:scale-110"}`}
           style={{ background: c, boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.08)" }}
           aria-label={c}
         />
       ))}
-      <label className="relative flex size-7 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-dashed border-black/25 text-[13px] text-foreground/50 hover:border-black/50" title="Custom color">
+      <label className="relative flex size-11 sm:size-7 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-dashed border-black/25 text-[13px] text-foreground/50 hover:border-black/50" title="Custom color">
         <input type="color" value={value} onChange={(e) => onChange(e.target.value)} className="absolute inset-0 cursor-pointer opacity-0" />+
       </label>
     </div>
@@ -86,4 +86,4 @@ export default function LookEditor({ look, onChange }: { look: Look; onChange: (
       </div>
     </div>
   );
-}
+    }

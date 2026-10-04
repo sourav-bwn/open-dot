@@ -50,7 +50,7 @@ export default function DotView({ dotId, tab, conversation }: { dotId: string; t
         </Link>
 
         <div className="dot-actions ml-auto flex w-full shrink-0 items-center justify-end gap-1 lg:w-auto">
-          <span className="hidden items-center lg:flex">
+          <span className="flex items-center">
             <ModelPicker compact value={dot.model} onChange={(m) => start(() => setDotModel(dot.id, m))} />
             <span className="mx-1 h-5 w-px bg-black/[0.08]" />
           </span>

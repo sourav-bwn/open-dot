@@ -89,10 +89,10 @@ export default function SetupPane({ dot }: { dot: Dot }) {
             {routines.length > 0 ? (
               <div className="surface divide-y divide-black/[0.06]">
                 {routines.map((r) => (
-                  <div key={r.id} className="flex items-start gap-3 py-3 pr-2 pl-4">
+                  <div key={r.id} className="flex flex-wrap items-start gap-2 py-3 pr-2 pl-4 sm:gap-3">
                     <span className={`mt-1.5 size-1.5 shrink-0 rounded-full ${r.enabled ? "bg-success" : "bg-foreground/25"}`} />
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
+                    <div className="min-w-0 basis-[calc(100%-2rem)] sm:basis-auto sm:flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="text-[14px]">{r.name}</span>
                         <code className="rounded-xs bg-black/[0.04] px-1.5 py-0.5 font-mono text-[10px] text-foreground/55">{r.schedule}</code>
                       </div>

@@ -64,7 +64,7 @@ export default function ModelPicker({
       >
         <Cpu className="size-3.5 text-foreground/45" strokeWidth={1.75} />
         {value === null && allowDefault ? <span className="text-foreground/45">Default ·</span> : null}
-        <span className="max-w-40 truncate">{current ? label(current) : "Loading…"}</span>
+        <span className="max-w-24 truncate sm:max-w-40">{current ? label(current) : "Loading…"}</span>
         <ChevronDown className={`size-3.5 text-foreground/40 transition-transform ${open ? "rotate-180" : ""}`} strokeWidth={1.75} />
       </button>
 

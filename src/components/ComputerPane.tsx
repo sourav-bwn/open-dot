@@ -64,7 +64,7 @@ export default function ComputerPane({ dot }: { dot: Dot }) {
                   : "Its own browser and workspace. Watch it work, or take over to log in yourself."}
             </p>
           </div>
-          <div className="flex shrink-0 gap-2">
+          <div className="flex shrink-0 flex-wrap gap-2">
             <button
               className="btn-secondary h-8 px-3 text-[13px]"
               disabled={pending}
@@ -89,15 +89,15 @@ export default function ComputerPane({ dot }: { dot: Dot }) {
 
         {/* Screen */}
         <section className="surface overflow-hidden shadow-elevated">
-          <div className="flex h-9 items-center gap-3 border-b border-black/[0.06] bg-popover px-3">
+          <div className="flex min-h-9 flex-wrap items-center gap-2 border-b border-black/[0.06] bg-popover px-3">
             <span className="flex gap-1.5">
               <span className="size-2.5 rounded-full bg-black/10" />
               <span className="size-2.5 rounded-full bg-black/10" />
               <span className="size-2.5 rounded-full bg-black/10" />
             </span>
-            <span className="flex h-6 flex-1 items-center gap-2 rounded-xs border border-black/[0.06] bg-card px-2.5 font-mono text-[11px] text-foreground/45">
+            <span className="flex h-6 min-w-0 flex-1 items-center gap-2 rounded-xs border border-black/[0.06] bg-card px-2.5 font-mono text-[11px] text-foreground/45">
               {cloud ? <Cloud className="size-3" strokeWidth={1.75} /> : <MonitorSmartphone className="size-3" strokeWidth={1.75} />}
-              {dot.name.toLowerCase()}.{cloud ? "cloud" : "browser"}
+              <span className="truncate">{dot.name.toLowerCase()}.{cloud ? "cloud" : "browser"}</span>
             </span>
             <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase">
               <span className={`size-1.5 rounded-full ${takenOver ? "bg-warning" : live || cloud || watching ? "live-dot bg-brand text-brand" : "bg-foreground/25"}`} />
@@ -116,7 +116,7 @@ export default function ComputerPane({ dot }: { dot: Dot }) {
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={shotSrc} alt={`${dot.name}'s screen`} className="h-full w-full bg-card object-contain" />
               ) : (
-                <div className="text-center">
+                <div className="p-4 text-center">
                   <MonitorSmartphone className="mx-auto size-6 text-foreground/30" strokeWidth={1.5} />
                   <p className="mt-3 text-body-sm text-foreground/50">Nothing on screen yet. Press Refresh to start {dot.name}&apos;s browser, or ask it to open a website.</p>
                 </div>

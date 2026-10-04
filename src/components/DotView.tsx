@@ -35,10 +35,10 @@ export default function DotView({ dotId, tab, conversation }: { dotId: string; t
   const base = `/dots/${dot.id}`;
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <header className="relative flex h-14 shrink-0 items-center gap-1.5 px-2 sm:gap-2 sm:px-4">
+      <header className="dot-header relative flex min-h-14 shrink-0 flex-wrap items-center gap-1.5 px-2 py-1 lg:h-14 lg:flex-nowrap sm:gap-2 sm:px-4 lg:py-0">
         <MenuButton />
         {/* Dot pill */}
-        <Link href={base} className="flex min-w-0 items-center gap-2 rounded-full bg-background py-1 pr-3.5 pl-1 transition-colors hover:bg-black/[0.06]">
+        <Link href={base} className="flex min-w-0 flex-1 items-center gap-2 rounded-full lg:flex-none bg-background py-1 pr-3.5 pl-1 transition-colors hover:bg-black/[0.06]">
           <DotOrb look={dot.look} status={dot.status} size={26} />
           <span className="truncate text-[14px] font-medium">{dot.name}</span>
           {dot.status !== "idle" && (
@@ -49,8 +49,8 @@ export default function DotView({ dotId, tab, conversation }: { dotId: string; t
           )}
         </Link>
 
-        <div className="ml-auto flex shrink-0 items-center gap-0.5 sm:gap-1">
-          <span className="hidden items-center sm:flex">
+        <div className="dot-actions ml-auto flex w-full shrink-0 items-center justify-end gap-1 lg:w-auto">
+          <span className="hidden items-center lg:flex">
             <ModelPicker compact value={dot.model} onChange={(m) => start(() => setDotModel(dot.id, m))} />
             <span className="mx-1 h-5 w-px bg-black/[0.08]" />
           </span>

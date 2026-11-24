@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start --port 3100",
     "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
     "desktop:dev": "OPEN_DOT_DEV_URL=http://localhost:3100 electron electron",
     "desktop:prepare": "next build && node scripts/desktop-prepare.mjs",
     "desktop": "electron electron",
